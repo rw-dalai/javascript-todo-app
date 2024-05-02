@@ -29,6 +29,7 @@ const state = {
 //   }, []);
 // }
 
+// Returns a new array with the filtered todos plus information where the filter word is found
 function getFilteredTodos() {
   const filterWord = state.filterWord.toLowerCase();
   const filteredTodos = [];
@@ -52,7 +53,7 @@ function addTodo(text) {
   state.nextId++;  // Increment the Id counter
 }
 
-function removeTodoById(id) {
+function removeTodo(id) {
   let index = state.todos.findIndex(todo => todo.id === id);
   state.todos.splice(index, 1);
 }
@@ -142,7 +143,7 @@ function onAddTodo() {
 }
 
 function onRemoveTodo(id) {
-  removeTodoById(id); // update state
+  removeTodo(id); // update state
   render(); // update ui
   console.log('state', state);
 }
